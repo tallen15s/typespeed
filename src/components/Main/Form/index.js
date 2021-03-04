@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function TimerForm({ handler }) {
+const Form = ({ handler, label, type, placeholder, buttontxt }) => {
   return (
     <form className="flex flex-col gap-3 items-center" onSubmit={handler}>
       <label htmlFor="secs" className="text-2xl">
@@ -12,10 +12,14 @@ function TimerForm({ handler }) {
       </button>
     </form>
   );
-}
-
-TimerForm.propTypes = {
-  handler: PropTypes.func.isRequired,
 };
 
-export default TimerForm;
+Form.propTypes = {
+  type: PropTypes.string,
+  handler: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  buttonTxt: PropTypes.string,
+};
+
+Form.defaultProps = { type: "text", placeholder: "", buttonTxt: "Submit" };
